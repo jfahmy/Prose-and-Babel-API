@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proseandbabel;
+
+service ProseAndBabel {
+
+rpc GetHaiku (HaikuRequest) returns (Haiku) {}
+}
+
+message HaikuRequest{
+  string ask = 1;
+}
+
+message Haiku{
+  string prose = 1;
+}
