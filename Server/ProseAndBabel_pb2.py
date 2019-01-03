@@ -19,21 +19,21 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='proseandbabel',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x13ProseAndBabel.proto\x12\rproseandbabel\"\x1b\n\x0cHaikuRequest\x12\x0b\n\x03\x61sk\x18\x01 \x01(\t\"\x16\n\x05Haiku\x12\r\n\x05prose\x18\x01 \x01(\t2P\n\rProseAndBabel\x12?\n\x08GetHaiku\x12\x1b.proseandbabel.HaikuRequest\x1a\x14.proseandbabel.Haiku\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x13ProseAndBabel.proto\x12\rproseandbabel\"\x1b\n\x0c\x42\x61\x62\x65lRequest\x12\x0b\n\x03\x61sk\x18\x01 \x01(\t\"\x19\n\x05\x42\x61\x62\x65l\x12\x10\n\x08response\x18\x01 \x01(\t2\x91\x01\n\rProseAndBabel\x12?\n\x08GetHaiku\x12\x1b.proseandbabel.BabelRequest\x1a\x14.proseandbabel.Babel\"\x00\x12?\n\x08GetBabel\x12\x1b.proseandbabel.BabelRequest\x1a\x14.proseandbabel.Babel\"\x00\x62\x06proto3')
 )
 
 
 
 
-_HAIKUREQUEST = _descriptor.Descriptor(
-  name='HaikuRequest',
-  full_name='proseandbabel.HaikuRequest',
+_BABELREQUEST = _descriptor.Descriptor(
+  name='BabelRequest',
+  full_name='proseandbabel.BabelRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='ask', full_name='proseandbabel.HaikuRequest.ask', index=0,
+      name='ask', full_name='proseandbabel.BabelRequest.ask', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -56,15 +56,15 @@ _HAIKUREQUEST = _descriptor.Descriptor(
 )
 
 
-_HAIKU = _descriptor.Descriptor(
-  name='Haiku',
-  full_name='proseandbabel.Haiku',
+_BABEL = _descriptor.Descriptor(
+  name='Babel',
+  full_name='proseandbabel.Babel',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='prose', full_name='proseandbabel.Haiku.prose', index=0,
+      name='response', full_name='proseandbabel.Babel.response', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -83,26 +83,26 @@ _HAIKU = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=67,
-  serialized_end=89,
+  serialized_end=92,
 )
 
-DESCRIPTOR.message_types_by_name['HaikuRequest'] = _HAIKUREQUEST
-DESCRIPTOR.message_types_by_name['Haiku'] = _HAIKU
+DESCRIPTOR.message_types_by_name['BabelRequest'] = _BABELREQUEST
+DESCRIPTOR.message_types_by_name['Babel'] = _BABEL
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-HaikuRequest = _reflection.GeneratedProtocolMessageType('HaikuRequest', (_message.Message,), dict(
-  DESCRIPTOR = _HAIKUREQUEST,
+BabelRequest = _reflection.GeneratedProtocolMessageType('BabelRequest', (_message.Message,), dict(
+  DESCRIPTOR = _BABELREQUEST,
   __module__ = 'ProseAndBabel_pb2'
-  # @@protoc_insertion_point(class_scope:proseandbabel.HaikuRequest)
+  # @@protoc_insertion_point(class_scope:proseandbabel.BabelRequest)
   ))
-_sym_db.RegisterMessage(HaikuRequest)
+_sym_db.RegisterMessage(BabelRequest)
 
-Haiku = _reflection.GeneratedProtocolMessageType('Haiku', (_message.Message,), dict(
-  DESCRIPTOR = _HAIKU,
+Babel = _reflection.GeneratedProtocolMessageType('Babel', (_message.Message,), dict(
+  DESCRIPTOR = _BABEL,
   __module__ = 'ProseAndBabel_pb2'
-  # @@protoc_insertion_point(class_scope:proseandbabel.Haiku)
+  # @@protoc_insertion_point(class_scope:proseandbabel.Babel)
   ))
-_sym_db.RegisterMessage(Haiku)
+_sym_db.RegisterMessage(Babel)
 
 
 
@@ -112,16 +112,25 @@ _PROSEANDBABEL = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=91,
-  serialized_end=171,
+  serialized_start=95,
+  serialized_end=240,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetHaiku',
     full_name='proseandbabel.ProseAndBabel.GetHaiku',
     index=0,
     containing_service=None,
-    input_type=_HAIKUREQUEST,
-    output_type=_HAIKU,
+    input_type=_BABELREQUEST,
+    output_type=_BABEL,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetBabel',
+    full_name='proseandbabel.ProseAndBabel.GetBabel',
+    index=1,
+    containing_service=None,
+    input_type=_BABELREQUEST,
+    output_type=_BABEL,
     serialized_options=None,
   ),
 ])

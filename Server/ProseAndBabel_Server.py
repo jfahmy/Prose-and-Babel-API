@@ -1,6 +1,7 @@
 from concurrent import futures
 import time
 import haiku
+import markov
 
 import grpc
 
@@ -12,8 +13,10 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
 
     def GetHaiku(self, request, context):
-        return ProseAndBabel_pb2.Haiku(prose=haiku.build_haiku())
+        return ProseAndBabel_pb2.Babel(response=haiku.build_haiku())
 
+    def GetBabel(self, request,context):
+        return ProseAndBabel_pb2.Babel(response=markov.get_sentnce())
 
 def serve():
  server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

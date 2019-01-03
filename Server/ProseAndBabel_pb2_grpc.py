@@ -16,8 +16,13 @@ class ProseAndBabelStub(object):
     """
     self.GetHaiku = channel.unary_unary(
         '/proseandbabel.ProseAndBabel/GetHaiku',
-        request_serializer=ProseAndBabel__pb2.HaikuRequest.SerializeToString,
-        response_deserializer=ProseAndBabel__pb2.Haiku.FromString,
+        request_serializer=ProseAndBabel__pb2.BabelRequest.SerializeToString,
+        response_deserializer=ProseAndBabel__pb2.Babel.FromString,
+        )
+    self.GetBabel = channel.unary_unary(
+        '/proseandbabel.ProseAndBabel/GetBabel',
+        request_serializer=ProseAndBabel__pb2.BabelRequest.SerializeToString,
+        response_deserializer=ProseAndBabel__pb2.Babel.FromString,
         )
 
 
@@ -32,13 +37,25 @@ class ProseAndBabelServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetBabel(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_ProseAndBabelServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'GetHaiku': grpc.unary_unary_rpc_method_handler(
           servicer.GetHaiku,
-          request_deserializer=ProseAndBabel__pb2.HaikuRequest.FromString,
-          response_serializer=ProseAndBabel__pb2.Haiku.SerializeToString,
+          request_deserializer=ProseAndBabel__pb2.BabelRequest.FromString,
+          response_serializer=ProseAndBabel__pb2.Babel.SerializeToString,
+      ),
+      'GetBabel': grpc.unary_unary_rpc_method_handler(
+          servicer.GetBabel,
+          request_deserializer=ProseAndBabel__pb2.BabelRequest.FromString,
+          response_serializer=ProseAndBabel__pb2.Babel.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
