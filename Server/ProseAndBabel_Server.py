@@ -16,7 +16,7 @@ class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
         return ProseAndBabel_pb2.Babel(response=haiku.build_haiku())
 
     def GetBabel(self, request,context):
-        return ProseAndBabel_pb2.Babel(response=markov.get_sentnce())
+        return ProseAndBabel_pb2.Babel(response=markov.get_sentence())
 
 def serve():
  server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

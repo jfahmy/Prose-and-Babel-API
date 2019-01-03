@@ -1,7 +1,7 @@
 import random
 
 def read_file():
-    with open('don.txt', mode="r") as my_words:
+    with open('../Resources/don.txt', mode="r") as my_words:
         content = my_words.read()
         content = content.split()
         return content

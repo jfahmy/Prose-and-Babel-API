@@ -5,7 +5,7 @@ from nltk.corpus import cmudict
 dictionary = cmudict.dict()
 
 def read_file():
-    with open('./Resources/don.txt', mode="r") as all_words:
+    with open('../Resources/don.txt', mode="r") as all_words:
         all_words = all_words.read().split()
         clean_words = []
         for word in all_words:
