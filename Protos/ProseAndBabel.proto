@@ -4,13 +4,14 @@ package proseandbabel;
 
 service ProseAndBabel {
 
-rpc GetHaiku (HaikuRequest) returns (Haiku) {}
+rpc GetHaiku (BabelRequest) returns (Babel) {}
+rpc GetBabel (BabelRequest) returns (Babel) {}
 }
 
-message HaikuRequest{
+message BabelRequest{
   string ask = 1;
 }
 
-message Haiku{
-  string prose = 1;
+message Babel{
+  string response = 1;
 }
