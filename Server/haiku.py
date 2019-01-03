@@ -50,18 +50,18 @@ def build_haiku():
     first = "blank"
     while first == "blank":
         first = build_line(5)
-        print(nltk.pos_tag(first)[-1][1])
+        # print(nltk.pos_tag(first)[-1][1])
 
     second = "blank"
     while second == "blank":
         second = build_line(7)
-        print(nltk.pos_tag(second)[-1][1])
+        # print(nltk.pos_tag(second)[-1][1])
 
     third = "blank"
     parts_of_speech = ['CC', 'PRP', 'PRP$', 'DT']
     while third == "blank" :
         third = build_line(5)
-        print(nltk.pos_tag(third)[-1][1])
+        # print(nltk.pos_tag(third)[-1][1])
         if nltk.pos_tag(third)[-1][1] in parts_of_speech:
             third = "blank"
 
