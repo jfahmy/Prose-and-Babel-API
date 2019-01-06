@@ -1,15 +1,11 @@
 import random
-
-def read_file():
-    with open('../Resources/don.txt', mode="r") as my_words:
-        content = my_words.read()
-        content = content.split()
-        return content
+import scrape
 
 
-#Order of 2
-def build_chain():
-    content = read_file()
+#Order of 2 chain
+def build_chain(url):
+    content = scrape.full_text(url)
+    content = content.split()
     chain = {}
     for i,word in enumerate(content):
         if i == len(content) - 3:
@@ -48,8 +44,7 @@ def build_chain():
     return chain
 
 
-def build_sentence():
-    chain = build_chain()
+def build_sentence(chain):
     sentence = []
     word = random.choice(chain["NONWORD"])
     sentence.append(word)
@@ -63,9 +58,10 @@ def build_sentence():
     return sentence
 
 
-def get_sentence():
-    markov_babel = build_sentence()
+def get_sentence(url):
+    chain = build_chain(url)
+    markov_babel = build_sentence(chain)
     while len(markov_babel) > 280:
-        markov_babel = build_sentence()
+        markov_babel = build_sentence(chain)
 
     return markov_babel
