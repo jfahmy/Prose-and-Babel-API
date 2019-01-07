@@ -13,7 +13,17 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
 
     def GetHaiku(self, request, context):
-        return ProseAndBabel_pb2.Babel(response=haiku.build_haiku(request.ask))
+        # try and except makes sure the call functions whether or not URL is provided by client
+        try:
+            request.ask
+            prose = haiku.build_haiku(request.ask)
+            return ProseAndBabel_pb2.Babel(response=prose)
+        except:
+            prose = haiku.build_haiku("http://www.gutenberg.org/cache/epub/996/pg996.html")
+            return ProseAndBabel_pb2.Babel(response=prose)
+
+        # return ProseAndBabel_pb2.Babel(response=haiku.build_haiku(request.ask))
+
 
     def GetBabel(self, request,context):
         return ProseAndBabel_pb2.Babel(response=markov.get_sentence(request.ask))
