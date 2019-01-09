@@ -34,6 +34,11 @@ class ProseAndBabelStub(object):
         request_serializer=ProseAndBabel__pb2.UserTweets.SerializeToString,
         response_deserializer=ProseAndBabel__pb2.UserBabel.FromString,
         )
+    self.UserHaiku = channel.unary_unary(
+        '/proseandbabel.ProseAndBabel/UserHaiku',
+        request_serializer=ProseAndBabel__pb2.UserTweets.SerializeToString,
+        response_deserializer=ProseAndBabel__pb2.UserBabel.FromString,
+        )
 
 
 class ProseAndBabelServicer(object):
@@ -68,6 +73,13 @@ class ProseAndBabelServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def UserHaiku(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_ProseAndBabelServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -88,6 +100,11 @@ def add_ProseAndBabelServicer_to_server(servicer, server):
       ),
       'UserMarkov': grpc.unary_unary_rpc_method_handler(
           servicer.UserMarkov,
+          request_deserializer=ProseAndBabel__pb2.UserTweets.FromString,
+          response_serializer=ProseAndBabel__pb2.UserBabel.SerializeToString,
+      ),
+      'UserHaiku': grpc.unary_unary_rpc_method_handler(
+          servicer.UserHaiku,
           request_deserializer=ProseAndBabel__pb2.UserTweets.FromString,
           response_serializer=ProseAndBabel__pb2.UserBabel.SerializeToString,
       ),

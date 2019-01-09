@@ -8,6 +8,7 @@ rpc GetHaiku (BabelRequest) returns (Babel) {}
 rpc GetBabel (BabelRequest) returns (Babel) {}
 rpc UserMarkovStream (stream UserTweets) returns (UserBabel) {}
 rpc UserMarkov (UserTweets) returns (UserBabel) {}
+rpc UserHaiku (UserTweets) returns (UserBabel) {}
 }
 
 message BabelRequest{

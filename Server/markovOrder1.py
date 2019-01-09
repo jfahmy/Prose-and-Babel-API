@@ -27,7 +27,6 @@ def build_chain(full_text):
             else:
                 chain[word] = [full_text[i + 1]]
 
-    print(chain)
     return chain
 
 def generate_sentence(full_text):

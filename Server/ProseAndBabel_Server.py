@@ -2,6 +2,7 @@ from concurrent import futures
 import time
 import haiku
 import markovOrder1
+import scrape
 
 import grpc
 
@@ -29,7 +30,10 @@ class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
         return ProseAndBabel_pb2.Babel(prose=markov.get_sentence(full_text))
 
     def UserMarkov(self, request_iterator, context):
-        return ProseAndBabel_pb2.Babel(prose=markovOrder1.generate_sentence(request_iterator.tweets)+ " #BabelBy")
+        return ProseAndBabel_pb2.Babel(prose=markovOrder1.generate_sentence(request_iterator.tweets)+ " #BabelFrom")
+
+    def UserHaiku(self, request, context):
+        return ProseAndBabel_pb2.Babel(prose=haiku.build_haiku(request.tweets) + " #HaikuFrom")
 
 
 def serve():
