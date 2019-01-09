@@ -1,7 +1,7 @@
 from concurrent import futures
 import time
 import haiku
-import markov
+import markovOrder1
 
 import grpc
 
@@ -16,17 +16,21 @@ class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
         # try and except makes sure the call functions whether or not URL is provided by client
         try:
             request.ask
-            prose = haiku.build_haiku(request.ask)
-            return ProseAndBabel_pb2.Babel(response=prose)
+            full_text = scrape.full_text(request.ask)
+            prose = haiku.build_haiku(full_text)
+            return ProseAndBabel_pb2.Babel(prose=prose)
         except:
-            prose = haiku.build_haiku("http://www.gutenberg.org/cache/epub/996/pg996.html")
-            return ProseAndBabel_pb2.Babel(response=prose)
+            full_text = scrape.full_text("http://www.gutenberg.org/cache/epub/996/pg996.html")
+            prose = haiku.build_haiku(fulltext)
+            return ProseAndBabel_pb2.Babel(prose=prose)
 
-        # return ProseAndBabel_pb2.Babel(response=haiku.build_haiku(request.ask))
+    def GetBabel(self, request, context):
+        full_text = scrape.full_text(request.ask)
+        return ProseAndBabel_pb2.Babel(prose=markov.get_sentence(full_text))
 
+    def UserMarkov(self, request_iterator, context):
+        return ProseAndBabel_pb2.Babel(prose=markovOrder1.generate_sentence(request_iterator.tweets)+ " #BabelBy")
 
-    def GetBabel(self, request,context):
-        return ProseAndBabel_pb2.Babel(response=markov.get_sentence(request.ask))
 
 def serve():
  server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

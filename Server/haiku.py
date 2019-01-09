@@ -57,8 +57,7 @@ def build_line(num, words):
 
 
 
-def build_haiku(url):
-    full_text = scrape.full_text(url)
+def build_haiku(full_text):
     words_array = sanitize_text(full_text)
 
     first = "blank"

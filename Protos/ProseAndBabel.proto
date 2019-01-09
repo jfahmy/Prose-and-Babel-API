@@ -6,6 +6,8 @@ service ProseAndBabel {
 
 rpc GetHaiku (BabelRequest) returns (Babel) {}
 rpc GetBabel (BabelRequest) returns (Babel) {}
+rpc UserMarkovStream (stream UserTweets) returns (UserBabel) {}
+rpc UserMarkov (UserTweets) returns (UserBabel) {}
 }
 
 message BabelRequest{
@@ -13,5 +15,13 @@ message BabelRequest{
 }
 
 message Babel{
-  string response = 1;
+  string prose = 1;
+}
+
+message UserTweets{
+  string tweets = 1;
+}
+
+message UserBabel{
+  string prose = 1;
 }
