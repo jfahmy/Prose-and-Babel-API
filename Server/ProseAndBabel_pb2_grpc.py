@@ -39,6 +39,11 @@ class ProseAndBabelStub(object):
         request_serializer=ProseAndBabel__pb2.UserTweets.SerializeToString,
         response_deserializer=ProseAndBabel__pb2.UserBabel.FromString,
         )
+    self.GetCelebMarkov = channel.unary_unary(
+        '/proseandbabel.ProseAndBabel/GetCelebMarkov',
+        request_serializer=ProseAndBabel__pb2.BabelRequest.SerializeToString,
+        response_deserializer=ProseAndBabel__pb2.CelebBabel.FromString,
+        )
 
 
 class ProseAndBabelServicer(object):
@@ -80,6 +85,13 @@ class ProseAndBabelServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetCelebMarkov(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_ProseAndBabelServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -107,6 +119,11 @@ def add_ProseAndBabelServicer_to_server(servicer, server):
           servicer.UserHaiku,
           request_deserializer=ProseAndBabel__pb2.UserTweets.FromString,
           response_serializer=ProseAndBabel__pb2.UserBabel.SerializeToString,
+      ),
+      'GetCelebMarkov': grpc.unary_unary_rpc_method_handler(
+          servicer.GetCelebMarkov,
+          request_deserializer=ProseAndBabel__pb2.BabelRequest.FromString,
+          response_serializer=ProseAndBabel__pb2.CelebBabel.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

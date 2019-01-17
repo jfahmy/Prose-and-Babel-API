@@ -5,6 +5,7 @@ def build_chain(full_text):
     full_text = full_text.split()
     for i,word in enumerate(full_text):
         if i == len(full_text) - 1:
+            # bug here I think
             chain[word] = ["NONWORD"]
             break
         elif i == 0:

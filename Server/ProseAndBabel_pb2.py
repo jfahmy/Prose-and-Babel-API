@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='proseandbabel',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x13ProseAndBabel.proto\x12\rproseandbabel\"\x1b\n\x0c\x42\x61\x62\x65lRequest\x12\x0b\n\x03\x61sk\x18\x01 \x01(\t\"\x16\n\x05\x42\x61\x62\x65l\x12\r\n\x05prose\x18\x01 \x01(\t\"\x1c\n\nUserTweets\x12\x0e\n\x06tweets\x18\x01 \x01(\t\"\x1a\n\tUserBabel\x12\r\n\x05prose\x18\x01 \x01(\t2\xe7\x02\n\rProseAndBabel\x12?\n\x08GetHaiku\x12\x1b.proseandbabel.BabelRequest\x1a\x14.proseandbabel.Babel\"\x00\x12?\n\x08GetBabel\x12\x1b.proseandbabel.BabelRequest\x1a\x14.proseandbabel.Babel\"\x00\x12K\n\x10UserMarkovStream\x12\x19.proseandbabel.UserTweets\x1a\x18.proseandbabel.UserBabel\"\x00(\x01\x12\x43\n\nUserMarkov\x12\x19.proseandbabel.UserTweets\x1a\x18.proseandbabel.UserBabel\"\x00\x12\x42\n\tUserHaiku\x12\x19.proseandbabel.UserTweets\x1a\x18.proseandbabel.UserBabel\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x13ProseAndBabel.proto\x12\rproseandbabel\"\x1b\n\x0c\x42\x61\x62\x65lRequest\x12\x0b\n\x03\x61sk\x18\x01 \x01(\t\"\x16\n\x05\x42\x61\x62\x65l\x12\r\n\x05prose\x18\x01 \x01(\t\"\x1c\n\nUserTweets\x12\x0e\n\x06tweets\x18\x01 \x01(\t\"\x1a\n\tUserBabel\x12\r\n\x05prose\x18\x01 \x01(\t\"+\n\nCelebBabel\x12\r\n\x05tweet\x18\x01 \x01(\t\x12\x0e\n\x06source\x18\x02 \x01(\t2\xb3\x03\n\rProseAndBabel\x12?\n\x08GetHaiku\x12\x1b.proseandbabel.BabelRequest\x1a\x14.proseandbabel.Babel\"\x00\x12?\n\x08GetBabel\x12\x1b.proseandbabel.BabelRequest\x1a\x14.proseandbabel.Babel\"\x00\x12K\n\x10UserMarkovStream\x12\x19.proseandbabel.UserTweets\x1a\x18.proseandbabel.UserBabel\"\x00(\x01\x12\x43\n\nUserMarkov\x12\x19.proseandbabel.UserTweets\x1a\x18.proseandbabel.UserBabel\"\x00\x12\x42\n\tUserHaiku\x12\x19.proseandbabel.UserTweets\x1a\x18.proseandbabel.UserBabel\"\x00\x12J\n\x0eGetCelebMarkov\x12\x1b.proseandbabel.BabelRequest\x1a\x19.proseandbabel.CelebBabel\"\x00\x62\x06proto3')
 )
 
 
@@ -148,10 +148,49 @@ _USERBABEL = _descriptor.Descriptor(
   serialized_end=147,
 )
 
+
+_CELEBBABEL = _descriptor.Descriptor(
+  name='CelebBabel',
+  full_name='proseandbabel.CelebBabel',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='tweet', full_name='proseandbabel.CelebBabel.tweet', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='source', full_name='proseandbabel.CelebBabel.source', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=149,
+  serialized_end=192,
+)
+
 DESCRIPTOR.message_types_by_name['BabelRequest'] = _BABELREQUEST
 DESCRIPTOR.message_types_by_name['Babel'] = _BABEL
 DESCRIPTOR.message_types_by_name['UserTweets'] = _USERTWEETS
 DESCRIPTOR.message_types_by_name['UserBabel'] = _USERBABEL
+DESCRIPTOR.message_types_by_name['CelebBabel'] = _CELEBBABEL
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 BabelRequest = _reflection.GeneratedProtocolMessageType('BabelRequest', (_message.Message,), dict(
@@ -182,6 +221,13 @@ UserBabel = _reflection.GeneratedProtocolMessageType('UserBabel', (_message.Mess
   ))
 _sym_db.RegisterMessage(UserBabel)
 
+CelebBabel = _reflection.GeneratedProtocolMessageType('CelebBabel', (_message.Message,), dict(
+  DESCRIPTOR = _CELEBBABEL,
+  __module__ = 'ProseAndBabel_pb2'
+  # @@protoc_insertion_point(class_scope:proseandbabel.CelebBabel)
+  ))
+_sym_db.RegisterMessage(CelebBabel)
+
 
 
 _PROSEANDBABEL = _descriptor.ServiceDescriptor(
@@ -190,8 +236,8 @@ _PROSEANDBABEL = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=150,
-  serialized_end=509,
+  serialized_start=195,
+  serialized_end=630,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetHaiku',
@@ -236,6 +282,15 @@ _PROSEANDBABEL = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_USERTWEETS,
     output_type=_USERBABEL,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetCelebMarkov',
+    full_name='proseandbabel.ProseAndBabel.GetCelebMarkov',
+    index=5,
+    containing_service=None,
+    input_type=_BABELREQUEST,
+    output_type=_CELEBBABEL,
     serialized_options=None,
   ),
 ])

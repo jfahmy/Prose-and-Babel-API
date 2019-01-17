@@ -9,6 +9,7 @@ rpc GetBabel (BabelRequest) returns (Babel) {}
 rpc UserMarkovStream (stream UserTweets) returns (UserBabel) {}
 rpc UserMarkov (UserTweets) returns (UserBabel) {}
 rpc UserHaiku (UserTweets) returns (UserBabel) {}
+rpc GetCelebMarkov (BabelRequest) returns (CelebBabel) {}
 }
 
 message BabelRequest{
@@ -25,4 +26,9 @@ message UserTweets{
 
 message UserBabel{
   string prose = 1;
+}
+
+message CelebBabel{
+  string tweet = 1;
+  string source = 2;
 }

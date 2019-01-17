@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package markovchain;
+
+message Chain {
+  map<string, Value> link = 1;
+}
+
+message Value {
+  repeated Word word = 2;
+
+  message Word {
+    required string wordvalue = 1;
+    optional int32 selections = 2;
+    required string screen_name = 3;
+  }
+
+}

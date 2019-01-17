@@ -3,6 +3,7 @@ import time
 import haiku
 import markovOrder1
 import scrape
+import readmarkov
 
 import grpc
 
@@ -22,7 +23,7 @@ class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
             return ProseAndBabel_pb2.Babel(prose=prose)
         except:
             full_text = scrape.full_text("http://www.gutenberg.org/cache/epub/996/pg996.html")
-            prose = haiku.build_haiku(fulltext)
+            prose = haiku.build_haiku(full_text)
             return ProseAndBabel_pb2.Babel(prose=prose)
 
     def GetBabel(self, request, context):
@@ -34,6 +35,10 @@ class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
 
     def UserHaiku(self, request, context):
         return ProseAndBabel_pb2.Babel(prose=haiku.build_haiku(request.tweets) + " #HaikuFrom")
+
+    def GetCelebMarkov(self, request, context):
+        response = readmarkov.get_markov()
+        return ProseAndBabel_pb2.CelebBabel(tweet=response[0], source=response[1])
 
 
 def serve():
