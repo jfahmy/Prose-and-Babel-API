@@ -6,16 +6,6 @@ import scrape
 from nltk.corpus import cmudict
 dictionary = cmudict.dict()
 
-# def read_file():
-#     with open('./Resources/don.txt', mode="r") as all_words:
-#         all_words = all_words.read().split()
-#         clean_words = []
-#         for word in all_words:
-#             word = clean_word(word)
-#             if word in dictionary or word == "I":
-#                 clean_words.append(clean_word(word))
-#
-#         return clean_words
 
 def sanitize_text(text):
         all_words = text.split()

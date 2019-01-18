@@ -35,10 +35,11 @@ def generate_sentence(full_text):
     sentence = []
     word = random.choice(chain["NONWORD"])
     sentence.append(word)
+    word = random.choice(chain[word])
 
-    while chain[word] != ["NONWORD"]:
-        word = random.choice(chain[word])
+    while word != "NONWORD":
         sentence.append(word)
+        word = random.choice(chain[word])
 
     sentence = ' '.join(sentence)
     return sentence

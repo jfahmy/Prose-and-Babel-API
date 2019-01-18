@@ -12,7 +12,9 @@ import ProseAndBabel_pb2_grpc
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
+
 class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
+
 
     def GetHaiku(self, request, context):
         # try and except makes sure the call functions whether or not URL is provided by client
@@ -36,9 +38,10 @@ class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
     def UserHaiku(self, request, context):
         return ProseAndBabel_pb2.Babel(prose=haiku.build_haiku(request.tweets) + " #HaikuFrom")
 
-    def GetCelebMarkov(self, request, context):
-        response = readmarkov.get_markov()
-        return ProseAndBabel_pb2.CelebBabel(tweet=response[0], source=response[1])
+    # Not working
+    # def GetCelebMarkov(self, request, context):
+    #     response = readmarkov.generate_sentence(chain)
+    #     return ProseAndBabel_pb2.CelebBabel(tweet=response[0], source=response[1])
 
 
 def serve():

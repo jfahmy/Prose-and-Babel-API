@@ -10,6 +10,7 @@ rpc UserMarkovStream (stream UserTweets) returns (UserBabel) {}
 rpc UserMarkov (UserTweets) returns (UserBabel) {}
 rpc UserHaiku (UserTweets) returns (UserBabel) {}
 rpc GetCelebMarkov (BabelRequest) returns (CelebBabel) {}
+rpc TestServerUp (Greeting) return (Hello) {}
 }
 
 message BabelRequest{
@@ -31,4 +32,12 @@ message UserBabel{
 message CelebBabel{
   string tweet = 1;
   string source = 2;
+}
+
+message Greeting{
+  string greeting = 1;
+}
+
+message Hello{
+  string hello = 1;
 }
