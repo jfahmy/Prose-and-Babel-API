@@ -24,11 +24,6 @@ class ProseAndBabelStub(object):
         request_serializer=ProseAndBabel__pb2.BabelRequest.SerializeToString,
         response_deserializer=ProseAndBabel__pb2.Babel.FromString,
         )
-    self.UserMarkovStream = channel.stream_unary(
-        '/proseandbabel.ProseAndBabel/UserMarkovStream',
-        request_serializer=ProseAndBabel__pb2.UserTweets.SerializeToString,
-        response_deserializer=ProseAndBabel__pb2.UserBabel.FromString,
-        )
     self.UserMarkov = channel.unary_unary(
         '/proseandbabel.ProseAndBabel/UserMarkov',
         request_serializer=ProseAndBabel__pb2.UserTweets.SerializeToString,
@@ -39,10 +34,20 @@ class ProseAndBabelStub(object):
         request_serializer=ProseAndBabel__pb2.UserTweets.SerializeToString,
         response_deserializer=ProseAndBabel__pb2.UserBabel.FromString,
         )
-    self.GetCelebMarkov = channel.unary_unary(
-        '/proseandbabel.ProseAndBabel/GetCelebMarkov',
+    self.GetFib = channel.unary_unary(
+        '/proseandbabel.ProseAndBabel/GetFib',
         request_serializer=ProseAndBabel__pb2.BabelRequest.SerializeToString,
-        response_deserializer=ProseAndBabel__pb2.CelebBabel.FromString,
+        response_deserializer=ProseAndBabel__pb2.Babel.FromString,
+        )
+    self.UserFib = channel.unary_unary(
+        '/proseandbabel.ProseAndBabel/UserFib',
+        request_serializer=ProseAndBabel__pb2.UserTweets.SerializeToString,
+        response_deserializer=ProseAndBabel__pb2.UserBabel.FromString,
+        )
+    self.TestServerUp = channel.unary_unary(
+        '/proseandbabel.ProseAndBabel/TestServerUp',
+        request_serializer=ProseAndBabel__pb2.Greeting.SerializeToString,
+        response_deserializer=ProseAndBabel__pb2.Hello.FromString,
         )
 
 
@@ -64,13 +69,6 @@ class ProseAndBabelServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def UserMarkovStream(self, request_iterator, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
   def UserMarkov(self, request, context):
     # missing associated documentation comment in .proto file
     pass
@@ -85,7 +83,21 @@ class ProseAndBabelServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def GetCelebMarkov(self, request, context):
+  def GetFib(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def UserFib(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def TestServerUp(self, request, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -105,11 +117,6 @@ def add_ProseAndBabelServicer_to_server(servicer, server):
           request_deserializer=ProseAndBabel__pb2.BabelRequest.FromString,
           response_serializer=ProseAndBabel__pb2.Babel.SerializeToString,
       ),
-      'UserMarkovStream': grpc.stream_unary_rpc_method_handler(
-          servicer.UserMarkovStream,
-          request_deserializer=ProseAndBabel__pb2.UserTweets.FromString,
-          response_serializer=ProseAndBabel__pb2.UserBabel.SerializeToString,
-      ),
       'UserMarkov': grpc.unary_unary_rpc_method_handler(
           servicer.UserMarkov,
           request_deserializer=ProseAndBabel__pb2.UserTweets.FromString,
@@ -120,10 +127,20 @@ def add_ProseAndBabelServicer_to_server(servicer, server):
           request_deserializer=ProseAndBabel__pb2.UserTweets.FromString,
           response_serializer=ProseAndBabel__pb2.UserBabel.SerializeToString,
       ),
-      'GetCelebMarkov': grpc.unary_unary_rpc_method_handler(
-          servicer.GetCelebMarkov,
+      'GetFib': grpc.unary_unary_rpc_method_handler(
+          servicer.GetFib,
           request_deserializer=ProseAndBabel__pb2.BabelRequest.FromString,
-          response_serializer=ProseAndBabel__pb2.CelebBabel.SerializeToString,
+          response_serializer=ProseAndBabel__pb2.Babel.SerializeToString,
+      ),
+      'UserFib': grpc.unary_unary_rpc_method_handler(
+          servicer.UserFib,
+          request_deserializer=ProseAndBabel__pb2.UserTweets.FromString,
+          response_serializer=ProseAndBabel__pb2.UserBabel.SerializeToString,
+      ),
+      'TestServerUp': grpc.unary_unary_rpc_method_handler(
+          servicer.TestServerUp,
+          request_deserializer=ProseAndBabel__pb2.Greeting.FromString,
+          response_serializer=ProseAndBabel__pb2.Hello.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

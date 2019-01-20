@@ -9,7 +9,7 @@ from nltk.corpus import cmudict
 dictionary = cmudict.dict()
 
 def read_file():
-    with open('poem_archive.txt', mode="r") as all_words:
+    with open('Prose-and-Babel-API/poem_archive.txt', mode="r") as all_words:
         lines = all_words.read().split("\n")
         lines_with_end = []
         for line in lines:
@@ -46,7 +46,7 @@ def count_syllables_in_sentence(sentence):
 def build_line(num, words):
     parts_of_speech = ['CC', 'PRP', 'PRP$', 'DT', 'IN']
     filler = ['and', 'the', 'that', 'their', 'o', 'they', 'did', 'to', 'of', 'he',
-    'she', 'thy', 'for', 'or', 'are', 'were', 'her', 'his']
+    'she', 'thy', 'for', 'or', 'are', 'were', 'her', 'his', 'as']
     index = random.randint(0,len(words)-1)
     while words[index] == 'ENDLINE' or nltk.pos_tag(words[index])[-1][1] in parts_of_speech or words[index] in filler:
         index = random.randint(0,len(words)-1)
@@ -68,9 +68,9 @@ def build_line(num, words):
 
 
 
-def get_lines(syllable_counts):
-    text = read_file()
+def get_lines(text=read_file()):
     poem = ""
+    syllable_counts = [1,1,2,3,5,8,13]
     for count in syllable_counts:
         line = "blank"
         while line == "blank":
@@ -85,7 +85,7 @@ def get_lines(syllable_counts):
     return poem
 
 # #
-print(get_lines([1,1,2,3,5,8,13]))
+# print(get_lines([1,1,2,3,5,8,13]))
 # #
 #
 # # read_file()
@@ -94,4 +94,28 @@ print(get_lines([1,1,2,3,5,8,13]))
 # print("to tag:")
 # print(nltk.pos_tag("to")[-1][1])
 
-read_file()
+
+
+# def match_class(target):
+#     def do_match(tag):
+#         classes = tag.get('class', [])
+#         return all(c in classes for c in target)
+#     return do_match
+#
+#
+#
+# ebook_url = "https://www.gutenberg.org/files/15553/15553-h/15553-h.htm"
+# response = requests.get(ebook_url)
+#
+# text = response.text
+#
+#
+# text_archive = open("poem_archive.txt", "w")
+#
+# soup = BeautifulSoup(text, 'html.parser')
+# # soup = BeautifulSoup(text)
+# for span in soup.find_all(match_class(["poem"])):
+#     text_archive.write(span.get_text())
+
+# for span in soup.find_all('poem'):
+    # text_archive.write(span.get_text())

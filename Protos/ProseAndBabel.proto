@@ -6,11 +6,12 @@ service ProseAndBabel {
 
 rpc GetHaiku (BabelRequest) returns (Babel) {}
 rpc GetBabel (BabelRequest) returns (Babel) {}
-rpc UserMarkovStream (stream UserTweets) returns (UserBabel) {}
 rpc UserMarkov (UserTweets) returns (UserBabel) {}
 rpc UserHaiku (UserTweets) returns (UserBabel) {}
-rpc GetCelebMarkov (BabelRequest) returns (CelebBabel) {}
-rpc TestServerUp (Greeting) return (Hello) {}
+rpc GetFib (BabelRequest) returns (Babel) {}
+rpc UserFib (UserTweets) returns (UserBabel) {}
+
+rpc TestServerUp (Greeting) returns (Hello) {}
 }
 
 message BabelRequest{
@@ -29,10 +30,6 @@ message UserBabel{
   string prose = 1;
 }
 
-message CelebBabel{
-  string tweet = 1;
-  string source = 2;
-}
 
 message Greeting{
   string greeting = 1;

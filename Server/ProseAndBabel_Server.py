@@ -4,6 +4,7 @@ import haiku
 import markovOrder1
 import scrape
 import readmarkov
+import fib
 
 import grpc
 
@@ -32,16 +33,18 @@ class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
         full_text = scrape.full_text(request.ask)
         return ProseAndBabel_pb2.Babel(prose=markov.get_sentence(full_text))
 
+    def GetFib(self, request, context):
+        return ProseAndBabel_pb2.Babel(prose=fib.get_lines())
+
     def UserMarkov(self, request_iterator, context):
         return ProseAndBabel_pb2.Babel(prose=markovOrder1.generate_sentence(request_iterator.tweets)+ " #BabelFrom")
 
     def UserHaiku(self, request, context):
         return ProseAndBabel_pb2.Babel(prose=haiku.build_haiku(request.tweets) + " #HaikuFrom")
 
-    # Not working
-    # def GetCelebMarkov(self, request, context):
-    #     response = readmarkov.generate_sentence(chain)
-    #     return ProseAndBabel_pb2.CelebBabel(tweet=response[0], source=response[1])
+    def UserFib(self, request, context):
+        return ProseAndBabel_pb2.Babel(prose=fib.get_lines(request.tweets) + " #FibPoemFrom")
+
 
 
 def serve():
