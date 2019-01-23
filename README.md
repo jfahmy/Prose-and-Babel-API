@@ -1,6 +1,29 @@
 # Prose-and-Babel-API: Experimenting with GRPC and prose generating scripts.
 
-This respository holds the server code and resources needed to return Haikus, Markov Chain generated sentences, and Fibonacci poems, when requested from a GRPC client. My GRPC client repository [lives here](https://github.com/jfahmy/BabelBots).
+This respository holds the server code and resources needed to return Haikus, Markov Chain generated sentences, and Fibonacci poems, when they are requested from a GRPC client. My GRPC client repository [lives here](https://github.com/jfahmy/BabelBots). However, after downloading the ProseAndBabel_pb2.py and ProseAndBabel_pb2_grpc.py files, this server can be used with any client. When working with a GRPC API, these two files serve to define the rpc method calls that are available between the server and client. 
+
+## Example sample calls as they exist in this repository: 
+
+### Requesting a Haiku:
+
+SAMPLE CALL - This will return a haiku as a string:
+response = stub.GetFib(ProseAndBabel_pb2.BabelRequest())
+repsone.prose
+
+### Requesting a Markov Sentence:
+
+SAMPLE CALL - This will return a Markov sentence as a string:
+
+response = stub.UserMarkov(ProseAndBabel_pb2.BabelRequest(ask=text))
+response.prose
+
+### Requesting a Fibonacci Poem:
+
+SAMPLE CALL - This will return a Fibonacci poem as a string:
+response = stub.GetFib(ProseAndBabel_pb2.BabelRequest())
+response.prose
+
+
 
 ## The Steps I followed to setup this GRPC application:
 
