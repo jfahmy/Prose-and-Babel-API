@@ -17,20 +17,24 @@ def read_file():
                 line = line + " ENDLINE"
                 lines_with_end.append(line)
         lines = " ".join(lines_with_end)
-        all_words = lines.split()
-        words = []
-        for word in all_words:
-            word = clean_word(word)
-            if word in dictionary or word == "I" or word == "ENDLINE":
-                words.append(word)
 
-        return words
+        return clean_words(lines)
 
 
 def clean_word(word):
         word = re.sub(r'\W+', '', word)
         return word
 
+
+def clean_words(lines):
+    all_words = lines.split()
+    words = []
+    for word in all_words:
+        word = clean_word(word)
+        if word in dictionary or word == "I" or word == "ENDLINE":
+            words.append(word)
+
+    return words
 
 d = cmudict.dict()
 def count_syllables_in_sentence(sentence):
@@ -68,7 +72,11 @@ def build_line(num, words):
 
 
 
-def get_lines(text=read_file()):
+def get_lines(text="blank"):
+    if text == "blank":
+        text = read_file()
+    else:
+        text = clean_words(text)
     poem = ""
     syllable_counts = [1,1,2,3,5,8,13]
     for count in syllable_counts:
@@ -84,6 +92,8 @@ def get_lines(text=read_file()):
 
     return poem
 
+
+get_lines()
 # #
 # print(get_lines([1,1,2,3,5,8,13]))
 # #

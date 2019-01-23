@@ -43,7 +43,8 @@ class ProseAndBabel(ProseAndBabel_pb2_grpc.ProseAndBabelServicer):
         return ProseAndBabel_pb2.Babel(prose=haiku.build_haiku(request.tweets) + " #HaikuFrom")
 
     def UserFib(self, request, context):
-        return ProseAndBabel_pb2.Babel(prose=fib.get_lines(request.tweets) + " #FibPoemFrom")
+        poem = fib.get_lines(request.tweets)
+        return ProseAndBabel_pb2.Babel(prose=poem + " #FibPoemFrom")
 
 
 
