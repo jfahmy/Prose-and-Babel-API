@@ -2,7 +2,7 @@
 
 This respository holds the server code and resources needed to return Haikus, Markov Chain generated sentences, and Fibonacci poems, when they are requested from a GRPC client. My GRPC client repository [lives here](https://github.com/jfahmy/BabelBots). However, after downloading the ProseAndBabel_pb2.py and ProseAndBabel_pb2_grpc.py files, this server can be used with any client. When working with a GRPC API, these two files serve to define the rpc method calls that are available between the server and client. 
 
-## Example sample calls as they exist in this repository: 
+## Sample calls to the server in this repository: 
 
 ### Requesting a Haiku:
 
@@ -25,7 +25,7 @@ response.prose
 
 
 
-## The Steps I followed to setup this GRPC application:
+## How I setup this GRPC application:
 
 1. DEFINE THE SERVICE
     - specify a named service in your .proto file then define the rpc methods inside it (remote procedural calls)
