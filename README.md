@@ -2,6 +2,7 @@
 
 This respository holds the server code and resources needed to return Haikus, Markov Chain generated sentences, and Fibonacci poems, when they are requested from a GRPC client. My GRPC client repository [lives here](https://github.com/jfahmy/BabelBots). However, after downloading the ProseAndBabel_pb2.py and ProseAndBabel_pb2_grpc.py files, this server can be used with any client. When working with a GRPC API, these two files serve to define the rpc method calls that are available between the server and client. 
 
+## Project Diagram
 ![Project Diagram](https://github.com/jfahmy/Images/blob/master/Babel%20Bots%20Diagram%20(1).png)
 
 ## Sample calls to the server in this repository: 
