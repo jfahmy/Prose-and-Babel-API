@@ -6,15 +6,15 @@ This respository holds the server code and resources needed to return Haikus, Ma
 
 ### Requesting a Haiku:
 
-SAMPLE CALL - This will return a haiku as a string:
+This call will return a haiku as a string:
 
 response = stub.GetFib(ProseAndBabel_pb2.BabelRequest())
 
-repsone.prose
+response.prose
 
 ### Requesting a Markov Sentence:
 
-SAMPLE CALL - This will return a Markov sentence as a string:
+This call will return a Markov sentence as a string:
 
 response = stub.UserMarkov(ProseAndBabel_pb2.BabelRequest(ask=text))
 
@@ -22,7 +22,7 @@ response.prose
 
 ### Requesting a Fibonacci Poem:
 
-SAMPLE CALL - This will return a Fibonacci poem as a string:
+This call will return a Fibonacci poem as a string:
 
 response = stub.GetFib(ProseAndBabel_pb2.BabelRequest())
 
