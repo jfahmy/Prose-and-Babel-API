@@ -30,7 +30,7 @@ response.prose
 
 
 
-## How I setup this GRPC application:
+## Steps for setting up a GRPC application:
 
 1. DEFINE THE SERVICE
     - specify a named service in your .proto file then define the rpc methods inside it (remote procedural calls)
